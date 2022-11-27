@@ -1,10 +1,8 @@
 module "vpc" {
   source = "./vpc"
 
-  public_subnet_cidrs  = var.vpc_public_subnet_cidrs
-  private_subnet_cidrs = var.vpc_private_subnet_cidrs
-
-  availability_zones = var.availability_zones
+  public_subnet_cidrs = var.vpc_public_subnet_cidrs
+  availability_zones  = var.availability_zones
 }
 
 output "vpc_id" {
@@ -26,3 +24,8 @@ output "vpc_cidr_block" {
 output "public_subnets" {
   value = module.vpc.public_subnets
 }
+
+output "default_public_subnet_id" {
+  value = module.vpc.public_subnets[0].id
+}
+

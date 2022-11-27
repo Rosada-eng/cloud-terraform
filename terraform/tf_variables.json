@@ -1,0 +1,62 @@
+{
+  "aws-region": "us-east-1",
+  "security_groups": [
+    {
+      "id": "sg-d1d2d3d4",
+      "name": "my-default-security-group",
+      "description": "default VPC security group -- allows SSH",
+      "ingress": [
+        {
+          "description": "enables SSH connections from all IPs",
+          "from_port": 22,
+          "to_port": 22,
+          "protocol": "tcp",
+          "cidr_blocks": ["0.0.0.0/0"]
+        }
+      ],
+      "egress": [
+        {
+          "description": "enables output to all IPs",
+          "from_port": 0,
+          "to_port": 0,
+          "protocol": "-1",
+          "cidr_blocks": ["0.0.0.0/0"]
+        }
+      ]
+    },
+    {
+      "id": "sg-12345678",
+      "name": "not-default",
+      "description": "default VPC security group -- allows SSH",
+      "ingress": [
+        {
+          "description": "enables SSH connections from all IPs",
+          "from_port": 22,
+          "to_port": 22,
+          "protocol": "tcp",
+          "cidr_blocks": ["0.0.0.0/0"]
+        }
+      ],
+      "egress": [
+        {
+          "description": "enables output to all IPs",
+          "from_port": 0,
+          "to_port": 0,
+          "protocol": "-1",
+          "cidr_blocks": ["0.0.0.0/0"]
+        }
+      ]
+    }
+  ],
+  "instances": [
+    {
+      "name": "web",
+      "ami": "ami-09d56f8956ab235b3",
+      "type": "t2.micro",
+      "key_name": "guilherme.rosada",
+      "is_public": true,
+      "security_groups": [],
+      "subnet_id": ""
+    }
+  ]
+}
