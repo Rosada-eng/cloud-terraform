@@ -7,7 +7,8 @@ export const defaultTheme = {
     'green-icon': '#168a0c',
     'red-icon': '#cc170b',
 
-    'changes-background': '#746767',
+    'changes-background': '#D9D9D9',
+    'changes-background-border': '#746767',
 
     'default-background': '#675B5B33',
     'default-font-color': '#000000',

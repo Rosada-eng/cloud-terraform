@@ -7,6 +7,8 @@ export const CardContainer = styled.div`
     width: 256px;
     height: 320px;
 
+    margin-bottom: 2rem;
+
     justify-content: center;
     align-items: center;
     

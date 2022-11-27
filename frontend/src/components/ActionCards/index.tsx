@@ -1,3 +1,4 @@
+import { ApplyButton } from "./components/ApplyButton";
 import { InstanceCard } from "./components/InstanceCard";
 import { SecurityGroupCard } from "./components/SecurityGroupCard";
 import { UsersIAMCard } from "./components/UsersIAMCard";
@@ -9,6 +10,7 @@ export function ActionCards() {
             <InstanceCard />
             <SecurityGroupCard />
             <UsersIAMCard />
+            <ApplyButton />
         </ActionCardsContainer>
     )
 }

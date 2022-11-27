@@ -1,6 +1,7 @@
 import { ThemeProvider } from "styled-components";
 import { ActionCards } from "./components/ActionCards";
 import { InstanceCard } from "./components/ActionCards/components/InstanceCard";
+import { ChangesFeedback } from "./components/ActionCards/components/ChangesFeedback";
 import { Header } from "./components/Header";
 import { Status } from "./components/Status";
 import { GlobalStyle } from "./styles/global";
