@@ -1,6 +1,8 @@
 import { ThemeProvider } from "styled-components";
+import { ActionCards } from "./components/ActionCards";
+import { InstanceCard } from "./components/ActionCards/components/InstanceCard";
 import { Header } from "./components/Header";
-import { Status } from "./components/Header/Status";
+import { Status } from "./components/Status";
 import { GlobalStyle } from "./styles/global";
 import { defaultTheme } from "./styles/themes/default";
 
@@ -12,6 +14,7 @@ function App() {
       <GlobalStyle />
         <Header />
         <Status />
+        <ActionCards />
     </ThemeProvider>
   )
 }

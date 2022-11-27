@@ -1,6 +1,6 @@
 import { InstancesStatusContainer, InstanceStatusAndName, InstaceAbout } from "./style";
 import { Circle, Trash } from 'phosphor-react';
-import { defaultTheme } from "../../../../../styles/themes/default";
+import { defaultTheme } from "../../../../styles/themes/default";
 
 export function InstanceStatus() {
     return (
