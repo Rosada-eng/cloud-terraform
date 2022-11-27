@@ -50,7 +50,16 @@
   ],
   "instances": [
     {
-      "name": "web",
+      "name": "web1",
+      "ami": "ami-09d56f8956ab235b3",
+      "type": "t2.micro",
+      "key_name": "guilherme.rosada",
+      "is_public": true,
+      "security_groups": [],
+      "subnet_id": ""
+    },
+    {
+      "name": "web2",
       "ami": "ami-09d56f8956ab235b3",
       "type": "t2.micro",
       "key_name": "guilherme.rosada",

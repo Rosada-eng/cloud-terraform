@@ -5,6 +5,11 @@ module "vpc" {
   availability_zones  = var.availability_zones
 }
 
+output "vpc_main" {
+  value = module.vpc.vpc_main
+}
+
+
 output "vpc_id" {
   value = module.vpc.id
 }

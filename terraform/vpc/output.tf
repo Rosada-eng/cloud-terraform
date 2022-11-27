@@ -1,3 +1,8 @@
+output "vpc_main" {
+  value = aws_vpc.main
+}
+
+
 output "id" {
   value = aws_vpc.main.id
 }
@@ -13,7 +18,6 @@ output "vpc_cidr_block" {
 output "vpc_name" {
   value = aws_vpc.main.tags["Name"]
 }
-
 
 output "gateway_id" {
   value = aws_internet_gateway.gw.id
