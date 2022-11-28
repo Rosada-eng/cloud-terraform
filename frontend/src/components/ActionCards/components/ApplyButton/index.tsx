@@ -1,18 +1,42 @@
 import { useContext } from "react";
 import { AppContext } from "../../../../context/Context";
+import { api } from "../../../../services/api";
 import { ApplyButtonContainer } from "./style";
 
 export function ApplyButton() {
     const { instances, securityGroups, IAMUsers } = useContext(AppContext);
 
     function compileJSON() {
+        console.log("instances ", instances);
+
         let json = {
             "aws-region": "us-east-1",
-            "security_groups": securityGroups,
-            "instances": instances,
+            "security_groups": securityGroups.map((sg) => {
+                return {
+                    "name": sg.name,
+                    "description": sg.description,
+                    "ingress": sg.ingress,
+                    "egress": sg.egress
+                }
+            }),
+            "instances": instances.map((i) => {
+                return {
+                    "name": i.name,
+                    "ami": i.ami,
+                    "type": i.instance_type,
+                    "key_name": "guilherme.rosada",
+                    "is_public": i.is_public? i.is_public : true,
+                    "security_groups": i.vpc_security_group_ids,
+                    "subnet_id": i.subnet_id
+                }
+            }),
+
           }
-          
         console.log(json);
+          
+        api.post("/apply", json).then((response) => {console.log(response)});
+
+        
     }
 
 

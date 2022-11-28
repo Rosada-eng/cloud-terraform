@@ -17,9 +17,6 @@ export function Status() {
 
 
     const {instances, setInstances, securityGroups, setSecurityGroups, IAMUsers, setIAMUsers} = useContext(AppContext);
-    // const [instances, setInstances] = useState<[IInstance]>([{} as IInstance]); 
-    // const [securityGroups, setSecurityGroups] = useState<[ISecurityGroup]>([{} as ISecurityGroup]); 
-    // const [IAMUsers, setIAMUsers] = useState<[IIAMUser]>([{} as IIAMUser]); 
 
     const filterInstances = (rawData: IRequestData) => {
         let array = Object.entries(rawData.instances.value);
