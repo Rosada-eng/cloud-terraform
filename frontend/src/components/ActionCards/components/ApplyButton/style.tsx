@@ -21,10 +21,14 @@ export const ApplyButtonContainer = styled.button `
     height: 4rem;
     border-radius: 8px;
     
-    opacity: 0.4;
+    opacity: 0.7;
 
     :hover {
         cursor: pointer;
         opacity: 1;
+    }
+
+    :disabled {
+        opacity: 0.2;
     }
 `;
