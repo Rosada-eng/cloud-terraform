@@ -6,6 +6,9 @@ variable "AWS_SECRET_ACCESS" {
   type = string
 }
 
+variable "vpc_name" {
+  type = string
+}
 variable "vpc_public_subnet_cidrs" {
   type        = list(string)
   description = "Public Subnet CIDRs values"

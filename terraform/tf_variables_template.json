@@ -1,5 +1,6 @@
 {
   "aws-region": "us-east-1",
+  "vpc_name": "gr-cloud-2022",
   "security_groups": [
     {
       "id": "sg-d1d2d3d4",
@@ -67,5 +68,6 @@
       "security_groups": [],
       "subnet_id": ""
     }
-  ]
+  ],
+  "users": ["gui.r33", "gui.r233"]
 }

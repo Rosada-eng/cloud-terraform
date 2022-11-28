@@ -1,6 +1,7 @@
 module "vpc" {
   source = "./vpc"
 
+  vpc_name            = var.vpc_name
   public_subnet_cidrs = var.vpc_public_subnet_cidrs
   availability_zones  = var.availability_zones
 }
