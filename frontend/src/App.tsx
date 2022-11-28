@@ -1,11 +1,12 @@
 import { ThemeProvider } from "styled-components";
-import { ActionCards } from "./components/ActionCards";
-import { Header } from "./components/Header";
-import { Status } from "./components/Status";
 import { GlobalStyle } from "./styles/global";
 import { defaultTheme } from "./styles/themes/default";
-import { ModalProvider } from 'styled-react-modal'
 import { AppProvider } from "./context/Context";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Home } from "./pages/Home";
+import { Instances } from "./pages/Instances";
+import { SecurityGroups } from "./pages/SecurityGroups";
+import { IAMUsers } from "./pages/IAMUsers";
 
 
 
@@ -15,12 +16,17 @@ function App() {
     <ThemeProvider theme={defaultTheme}>
         <GlobalStyle />
           <AppProvider>
-            <ModalProvider>
-              <Header />
-              <Status />
-              <ActionCards />
+            <BrowserRouter>
+              <Routes>
+                <Route element={<Home/>} path="/" />
+                <Route element={<Instances/>} path="/instances" />
+                <Route element={<SecurityGroups/>} path="/security_groups" />
+                <Route element={<IAMUsers/>} path="/users" />
+
+              </Routes>
               
-            </ModalProvider>
+            
+            </BrowserRouter>
           </AppProvider>
     </ThemeProvider>
   )

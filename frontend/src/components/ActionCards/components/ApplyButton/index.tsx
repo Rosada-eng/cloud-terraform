@@ -4,7 +4,7 @@ import { api } from "../../../../services/api";
 import { ApplyButtonContainer } from "./style";
 
 export function ApplyButton() {
-    const { instances, securityGroups, IAMUsers, setChangedIAMUsers, setChangedInstances, setChangedSecurityGroups } = useContext(AppContext);
+    const { instances, securityGroups, IAMUsers } = useContext(AppContext);
 
 
     const askApply = async (json) => { 

@@ -13,7 +13,7 @@ export const InstanceStatusAndName = styled.div`
     gap: 10px;
     align-items: center;
 
-    width: 10rem;
+    width: 20rem;
     
     font-weight: bold;
 

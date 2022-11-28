@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { AppContext } from "../../context/Context";
 import { api } from "../../services/api";
 import { IAMUserStatus } from "./components/IAMUserStatus";
@@ -114,7 +115,7 @@ export function Status() {
                             instanceZone={instance.availability_zone} 
                         />)
                     })}
-                    <p className="see-more"> Ver mais</p>
+                    <Link className="see-more" to="/instances">Ver todas</Link>
                 </StatusColumn> 
                     
                 }
@@ -126,28 +127,28 @@ export function Status() {
                         <StatusColumnTitle> Grupos de Segurança </StatusColumnTitle>
                         {securityGroups.slice(0, 4).map((sg) => {
                             return (
-                            <SecurityGroupStatus 
+                                <SecurityGroupStatus 
                                 key={sg.id}
                                 securityGroupName={sg.name} 
-                            />)
-                        })}
-                        <p className="see-more"> Ver mais</p>
+                                />)
+                            })}
+                        <Link className="see-more" to="/security_groups">Ver todas</Link>
                     </StatusColumn>
                 }   
 
                 {loadingIAMUser ?
                     <p>Carregando...</p>
                     :   
-                <StatusColumn >
+                    <StatusColumn >
                     <StatusColumnTitle> Usuários IAM </StatusColumnTitle>
                     {IAMUsers.slice(0, 4).map((user) => {
                         return (
-                        <IAMUserStatus 
+                            <IAMUserStatus 
                             key={user.name}
                             userName={user.name} 
-                        />)
-                    })}
-                    <p className="see-more"> Ver mais</p>
+                            />)
+                        })}
+                    <Link className="see-more" to="/users">Ver todas</Link>
                 </StatusColumn>
                 }
             </StatusBox>
