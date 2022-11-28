@@ -1,18 +1,25 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { AppContext } from "../../context/Context";
 import { api } from "../../services/api";
 import { IAMUserStatus } from "./components/IAMUserStatus";
 import { InstanceStatus } from "./components/InstanceStatus";
 import { SecurityGroupStatus } from "./components/SecurityGroupsStatus";
 import { StatusContainer, StatusBox, StatusColumn, StatusColumnTitle } from "./style";
 
+
+
 export function Status() {
     const [data, setData] = useState({});
+
     const [loadingInstance, setLoadingInstance] = useState(true);
     const [loadingSecurityGroup, setLoadingSecurityGroup] = useState(true);
     const [loadingIAMUser, setLoadingIAMUser] = useState(true);
-    const [instances, setInstances] = useState<[IInstance]>([{} as IInstance]); 
-    const [securityGroups, setSecurityGroups] = useState<[ISecurityGroup]>([{} as ISecurityGroup]); 
-    const [IAMUsers, setIAMUsers] = useState<[IIAMUser]>([{} as IIAMUser]); 
+
+
+    const {instances, setInstances, securityGroups, setSecurityGroups, IAMUsers, setIAMUsers} = useContext(AppContext);
+    // const [instances, setInstances] = useState<[IInstance]>([{} as IInstance]); 
+    // const [securityGroups, setSecurityGroups] = useState<[ISecurityGroup]>([{} as ISecurityGroup]); 
+    // const [IAMUsers, setIAMUsers] = useState<[IIAMUser]>([{} as IIAMUser]); 
 
     const filterInstances = (rawData: IRequestData) => {
         let array = Object.entries(rawData.instances.value);
