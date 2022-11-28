@@ -10,4 +10,10 @@ export const IAMUserStatusContainer = styled.div`
     margin-bottom: .5rem;
     font-size: 0.8rem;
     gap: .5rem;
+
+    .remove {
+        :hover {
+            cursor: pointer;
+        }
+    }
 `;

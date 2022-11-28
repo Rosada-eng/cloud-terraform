@@ -1,15 +1,18 @@
+import { useState } from "react";
 import { useContext } from "react";
 import { AppContext } from "../../../../context/Context";
 import { api } from "../../../../services/api";
 import { ApplyButtonContainer } from "./style";
 
 export function ApplyButton() {
-    const { instances, securityGroups, IAMUsers } = useContext(AppContext);
-
+    const { vpcName, instances, securityGroups, IAMUsers } = useContext(AppContext);
+    const [isApplying, setIsApplying] = useState(false);
 
     const askApply = async (json) => { 
+        setIsApplying(true);
         const result = await api.post("/apply", json);
         console.log(result.data);
+        setIsApplying(false);
     }
 
     function compileJSON() {
@@ -17,6 +20,7 @@ export function ApplyButton() {
 
         let json = {
             "aws-region": "us-east-1",
+            "vpc_name": vpcName,
             "security_groups": securityGroups.map((sg) => {
                 return {
                     "name": sg.name,
@@ -48,8 +52,9 @@ export function ApplyButton() {
 
 
     return (
-        <ApplyButtonContainer onClick={compileJSON}>
-            APLICAR
+        
+        <ApplyButtonContainer onClick={compileJSON} disabled={isApplying}>
+            {isApplying ? "Applying..." : "APPLY"}
         </ApplyButtonContainer>
     )
 }

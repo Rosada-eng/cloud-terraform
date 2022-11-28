@@ -1,15 +1,31 @@
 import { InstancesStatusContainer, InstanceStatusAndName, InstaceAbout } from "./style";
 import { Circle, Trash } from 'phosphor-react';
 import { defaultTheme } from "../../../../styles/themes/default";
+import { AppContext } from "../../../../context/Context";
+import { useContext } from "react";
 
 interface IInstanceStatus {
+    instanceId: string;
     instanceName: string;
     instanceStatus: string;
     instanceType: string;
     instanceZone: string | [string];
 }
 
-export function InstanceStatus({ instanceStatus, instanceName, instanceType, instanceZone}:IInstanceStatus) {
+
+export function InstanceStatus({ instanceId, instanceStatus, instanceName, instanceType, instanceZone}:IInstanceStatus) {
+    const {instances, setInstances} = useContext(AppContext);
+
+
+
+    function handleRemoveInstance(event) {
+        event.preventDefault();
+        const filteredInstances = instances.filter((i) => i.id !== instanceId);
+        setInstances(filteredInstances);
+        
+    }
+
+
     return (
         <InstancesStatusContainer> 
             <InstanceStatusAndName>
@@ -19,7 +35,7 @@ export function InstanceStatus({ instanceStatus, instanceName, instanceType, ins
             <InstaceAbout>
                 <p> {instanceType}</p>
                 <p> {instanceZone}</p>
-                <Trash size={16} weight="light" />
+                <Trash className="remove" size={16} weight="light" onClick={handleRemoveInstance}/>
             </InstaceAbout>
         </InstancesStatusContainer>
 

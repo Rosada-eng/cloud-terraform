@@ -31,25 +31,23 @@ export function NewForms() {
             }
 
             const newInstance = {
+                "id": Math.random().toString(36).substr(2, 9),
                 "name": name,
                 "ami": Ami,
-                "type": type,
+                "instance_type": type,
                 "key_name": "guilherme.rosada",
                 "is_public": isPublic,
-                "security_groups": [securityGroupId],
+                "vpc_security_group_ids": [securityGroupId],
                 "subnet_id": subnetId
             };
 
             newInstancesList.push(newInstance);
         }
 
-        const newChangedInstances = newInstancesList.map((instance) => {
-            return {'status': 'add', 'resource': instance}
-        });
+
         console.log("new instances ", newInstancesList);
 
         setInstances([...instances, ...newInstancesList]);
-        setChangedInstances([...changedInstances, ...newChangedInstances]);
 
         clearForm();
 

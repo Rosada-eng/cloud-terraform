@@ -17,8 +17,12 @@ export function Status() {
     const [loadingIAMUser, setLoadingIAMUser] = useState(true);
 
 
-    const {instances, setInstances, securityGroups, setSecurityGroups, IAMUsers, setIAMUsers} = useContext(AppContext);
+    const {instances, setInstances, securityGroups, setSecurityGroups, IAMUsers, setIAMUsers, vpcName, setVpcName} = useContext(AppContext);
 
+    const filterVPCName = (rawData: IRequestData) => {
+        const vpcName = rawData.vpc_name.value;
+        setVpcName(vpcName);
+    }
     const filterInstances = (rawData: IRequestData) => {
         let array = Object.entries(rawData.instances.value);
         const instances = array.map((i) => {
@@ -44,6 +48,7 @@ export function Status() {
     }
 
     const filterUsers = (rawData: IRequestData) => {
+        console.log(rawData)
         let array = Object.entries(rawData.users.value);
         const users = array.map((i) => i[0])
         console.log("users: ", users);
@@ -76,6 +81,7 @@ export function Status() {
         const result = await api.get('/status');
         if (result.status === 200) {
             setData(result.data);
+            filterVPCName(result.data);
             filterInstances(result.data);
             filterUsers(result.data);
             filterSecurityGroups(result.data);
@@ -105,6 +111,7 @@ export function Status() {
                         return (
                         <InstanceStatus 
                             key={instance.id}
+                            instanceId={instance.id}
                             instanceStatus={instance.instance_state}
                             instanceName={instance.name} 
                             instanceType={instance.instance_type} 
@@ -125,6 +132,7 @@ export function Status() {
                             return (
                                 <SecurityGroupStatus 
                                 key={sg.id}
+                                securityGroupId={sg.id}
                                 securityGroupName={sg.name} 
                                 />)
                             })}

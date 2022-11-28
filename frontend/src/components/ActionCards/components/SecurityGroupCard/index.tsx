@@ -12,7 +12,6 @@ export function SecurityGroupCard() {
     const [isOpen, setIsOpen] = useState(false);
     const [opacity, setOpacity] = useState(0);
 
-    const {changedSecurityGroups} = useContext(AppContext);
 
     function toggleModal(e) {
         setOpacity(0);

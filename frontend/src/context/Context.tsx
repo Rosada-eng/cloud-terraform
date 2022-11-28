@@ -1,6 +1,7 @@
 import { createContext, useState } from "react";
 
 interface AppContextType {
+    vpcName: string;
     instances: any[];
     securityGroups: any[];
     IAMUsers: any[];
@@ -9,6 +10,7 @@ interface AppContextType {
     changedSecurityGroups: any[];
     changedIAMUsers: any[];
 
+    setVpcName: any;
     setInstances: any;
     setSecurityGroups: any;
     setIAMUsers: any;
@@ -22,6 +24,7 @@ interface AppContextType {
 export const AppContext = createContext({} as AppContextType);
 
 export const AppProvider = ({ children }: any) => {
+    const [vpcName, setVpcName ] = useState();
     const [instances, setInstances] = useState([]);
     const [securityGroups, setSecurityGroups] = useState([]);
     const [IAMUsers, setIAMUsers] = useState([]);
@@ -31,6 +34,7 @@ export const AppProvider = ({ children }: any) => {
     const [changedIAMUsers, setChangedIAMUsers] = useState([]);
 
     const ContextValue = { 
+        vpcName, setVpcName,
         instances, setInstances,
         securityGroups,  setSecurityGroups,
         IAMUsers,  setIAMUsers,

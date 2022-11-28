@@ -29,5 +29,10 @@ export const InstaceAbout = styled.div`
 
     gap: 0.6rem;
     
+    .remove {
+        :hover {
+            cursor: pointer;
+        }
+    }
 
 `;

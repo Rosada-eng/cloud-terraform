@@ -21,15 +21,15 @@ export function GressForms({gress_type, ingress, setIngress, hasIngress, setHasI
     function addGress() {
         console.log(gress_type, {
             description: ingressDescription,
-            from: ingressFromPort,
-            to: ingressToPort,
+            from_port: parseInt(ingressFromPort),
+            to_port: parseInt(ingressToPort),
             protocol: ingressProtocol,
             cidr_blocks: ingressCidrIp.split(';')})
 
         setIngress([...ingress, {
             description: ingressDescription,
-            from: ingressFromPort,
-            to: ingressToPort,
+            from_port: parseInt(ingressFromPort),
+            to_port: parseInt(ingressToPort),
             protocol: ingressProtocol,
             cidr_blocks: ingressCidrIp.split(';')
         }]);
