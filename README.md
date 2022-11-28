@@ -46,3 +46,6 @@ npm run dev
 Ao executar o frontend em conjunto com o backend, a aplicação deve chamar uma rota (/status) que checa se existe um arquivo `terraform.tfstate`. Caso não exista, a aplicação criará uma VPC e outros recursos utilizando um template. Caso necessário, esse template pode ser personalizado, alterando algumas configurações de recursos.
 
 Para executar qualquer alteração nos recursos, sejam de inclusão ou exclusão, basta acionar os botões da interface e, após configurar todas as ações, clicar em `APLICAR` e aguardar até que as mudanças sejam feitas pelo Terraform.
+
+
+![1669622639411](image/README/1669622639411.png)
