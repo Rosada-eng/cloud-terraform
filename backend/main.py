@@ -26,3 +26,14 @@ async def status():
     except Exception as err:
         print("Error", err)
         return HTTPException(status_code=500, detail="Error")
+
+@app.post("/apply")
+async def apply(body: dict):
+    tf = Terraform()
+    try:
+        data = tf.send_apply(body)
+        return data
+
+    except Exception as err:
+        print("Error", err)
+        return HTTPException(status_code=500, detail="Error")
