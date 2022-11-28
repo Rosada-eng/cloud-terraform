@@ -50,7 +50,7 @@ class Terraform:
         x = subprocess.run(f'terraform apply -var-file="{file_name}" -auto-approve -no-color', capture_output=True)
 
         # remove json
-        # os.remove(file_name)
+        os.remove(file_name)
         print("Removendo arquivo terraform")
 
         result = x.stdout.decode('utf-8')

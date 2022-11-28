@@ -1,0 +1,10 @@
+{
+  "devDependencies": {
+    "@types/styled-components": "^5.1.26",
+    "styled-components": "^5.3.6"
+  },
+  "dependencies": {
+    "phosphor-react": "^1.4.1",
+    "styled-react-modal": "^3.0.1"
+  }
+}
