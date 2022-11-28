@@ -6,16 +6,20 @@ import { Header } from "./components/Header";
 import { Status } from "./components/Status";
 import { GlobalStyle } from "./styles/global";
 import { defaultTheme } from "./styles/themes/default";
-
+import { ModalProvider } from 'styled-react-modal'
+import { NewForms } from "./components/Forms/NewInstanceForms";
 
 function App() {
 
   return (
     <ThemeProvider theme={defaultTheme}>
       <GlobalStyle />
-        <Header />
-        <Status />
-        <ActionCards />
+        <ModalProvider>
+          <Header />
+          <Status />
+          <ActionCards />
+          
+        </ModalProvider>
     </ThemeProvider>
   )
 }
