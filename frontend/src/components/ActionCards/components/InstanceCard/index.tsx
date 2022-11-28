@@ -32,13 +32,14 @@ export function InstanceCard() {
 
     const StyledModal = Modal.styled`
         width: 720px;
-        height: 80vh;
+        height: 100vh;
         display: flex;
         align-items: center;
         justify-content: center;
         background-color: white;
         opacity: ${(props) => props.opacity};
-        transition : all 0.3s ease-in-out;`;
+        transition : all 0.3s ease-in-out;
+        overflow-y: scroll;`;
 
     
 
