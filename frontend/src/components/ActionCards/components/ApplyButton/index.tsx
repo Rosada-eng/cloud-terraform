@@ -9,7 +9,7 @@ export function ApplyButton() {
 
     const askApply = async (json) => { 
         const result = await api.post("/apply", json);
-        console.log(result);
+        console.log(result.data);
     }
 
     function compileJSON() {
@@ -36,6 +36,7 @@ export function ApplyButton() {
                     "subnet_id": i.subnet_id
                 }
             }),
+            "users": IAMUsers.filter((u) => u.name !== "")
 
           }
         console.log(json);

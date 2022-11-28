@@ -10,8 +10,8 @@ export function IAMUsers() {
             <ul>
                 {IAMUsers.map((users) => { 
                     return (
-                        <li style={{'padding': '1rem'}}key={users.name}>
-                            <h2 style={{'padding': '.5rem'}}>{users.name}</h2>
+                        <li key={users} style={{'padding': '1rem'}}>
+                            <h2 style={{'padding': '.5rem'}}>{users}</h2>
                         </li>
                     )
                 })}

@@ -45,11 +45,7 @@ export function Status() {
 
     const filterUsers = (rawData: IRequestData) => {
         let array = Object.entries(rawData.users.value);
-        const users = array.map((i) => {
-            return {
-                name: i[0],
-            };
-        })
+        const users = array.map((i) => i[0])
         console.log("users: ", users);
         setIAMUsers(users);
     }
@@ -125,7 +121,7 @@ export function Status() {
                     :
                     <StatusColumn >
                         <StatusColumnTitle> Grupos de Segurança </StatusColumnTitle>
-                        {securityGroups.slice(0, 4).map((sg) => {
+                        {securityGroups.slice(0, 12).map((sg) => {
                             return (
                                 <SecurityGroupStatus 
                                 key={sg.id}
@@ -141,11 +137,11 @@ export function Status() {
                     :   
                     <StatusColumn >
                     <StatusColumnTitle> Usuários IAM </StatusColumnTitle>
-                    {IAMUsers.slice(0, 4).map((user) => {
+                    {IAMUsers.slice(0, 12).map((user) => {
                         return (
                             <IAMUserStatus 
-                            key={user.name}
-                            userName={user.name} 
+                            key={user}
+                            userName={user} 
                             />)
                         })}
                     <Link className="see-more" to="/users">Ver todas</Link>

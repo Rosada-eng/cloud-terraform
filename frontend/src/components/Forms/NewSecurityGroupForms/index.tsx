@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AppContext } from "../../../context/Context";
 import { GressForms } from "./components/GressForms";
 import { StyledForms, StyledInput } from "./style";
 
@@ -10,6 +11,8 @@ interface IGress {
     cidr_blocks: [string]
 }
 export function NewSecurityGroupForms() {
+    const {securityGroups, setSecurityGroups} = useContext(AppContext);
+
     const [Name, setName] = useState('');
     const [description, setDescription] = useState('');
 
@@ -29,7 +32,7 @@ export function NewSecurityGroupForms() {
         setEgress([{} as IGress]);
     }
 
-    function handleSubmit(event) {
+    function handleAddSecurityGroup(event) {
 
         // CHECAR SE HÁ INGRESS E EGRESS. SE NÃO TIVER, COLOCAR VALOR PADRÃO 
         event.preventDefault();
@@ -42,6 +45,8 @@ export function NewSecurityGroupForms() {
         }
 
         console.log(newSG);
+
+        setSecurityGroups([...securityGroups, newSG]);
         
         clearForm();
 
@@ -49,7 +54,7 @@ export function NewSecurityGroupForms() {
     return (
         <div>
             <h1>Grupo de Segurança</h1>
-            <StyledForms onSubmit={handleSubmit}>
+            <StyledForms onSubmit={handleAddSecurityGroup}>
                 <label htmlFor="name"> Nome: </label>
                 <StyledInput 
                     id="name"
