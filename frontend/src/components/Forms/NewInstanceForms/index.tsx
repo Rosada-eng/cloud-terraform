@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AppContext } from "../../../context/Context";
 import { StyledForms, StyledInput } from "./style";
 
 export function NewForms() {
@@ -8,6 +9,7 @@ export function NewForms() {
     const [isPublic, setIsPublic] = useState(false);
     const [securityGroupId, setSecurityGroupId] = useState('');
     const [subnetId, setSubnetId] = useState('');
+    const [quantity, setQuantity] = useState(1);
 
     function clearForm() {
         setName('');
@@ -18,16 +20,44 @@ export function NewForms() {
         setSubnetId('');
     }
 
-    function handleSubmit(event) {
+    const {instances, setInstances, changedInstances, setChangedInstances} = useContext(AppContext);
+    function handleAddInstance(event) {
         event.preventDefault();
-        console.log(Name, Ami, type, isPublic, securityGroupId, subnetId);
+        const newInstancesList = [];
+        for(let i = 0; i < quantity; i++) {
+            let name = Name;
+            if (i !== 0) {
+                name = `${Name}-${i}`;
+            }
+
+            const newInstance = {
+                "name": name,
+                "ami": Ami,
+                "type": type,
+                "key_name": "guilherme.rosada",
+                "is_public": isPublic,
+                "security_groups": [securityGroupId],
+                "subnet_id": subnetId
+            };
+
+            newInstancesList.push(newInstance);
+        }
+
+        const newChangedInstances = newInstancesList.map((instance) => {
+            return {'status': 'add', 'resource': instance}
+        });
+        console.log("new instances ", newInstancesList);
+
+        setInstances([...instances, ...newInstancesList]);
+        setChangedInstances([...changedInstances, ...newChangedInstances]);
+
         clearForm();
 
     }
     return (
         <div>
             <h1>Instância</h1>
-            <StyledForms onSubmit={handleSubmit}>
+            <StyledForms onSubmit={handleAddInstance}>
                 <label htmlFor="name"> Nome: </label>
                 <StyledInput 
                     id="name"
@@ -62,8 +92,9 @@ export function NewForms() {
                     id="amount"
                     type="number"
                     placeholder="1"
+                    value={quantity}
                     min="1"
-                    max="10"
+                    onChange={e => setQuantity(Number(e.target.value))}
                     required
                 />
 

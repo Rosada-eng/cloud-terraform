@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const StatusContainer = styled.div`
     display: flex;
-    height: 200px;
+    height: 360px;
     width: 100vw;
     padding: 1rem 2rem;
     justify-content: flex-start;

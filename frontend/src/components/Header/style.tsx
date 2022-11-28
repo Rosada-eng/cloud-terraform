@@ -4,7 +4,7 @@ export const HeaderContainer = styled.header`
     display: flex;
 
     width: 100vw;
-    height: 100px; 
+    height: 80px; 
 
     padding: 1rem;
     margin: 0 auto;
@@ -21,5 +21,7 @@ export const VPCContainer = styled.div`
     flex-direction: column;
 
     align-items: flex-end;
-    margin-left: 60rem;    
+    margin-left: 60rem;
+    
+    font-size: 1rem;
 `;

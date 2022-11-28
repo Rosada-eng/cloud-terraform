@@ -4,9 +4,8 @@ export const CardContainer = styled.div`
     display: flex;
     flex-direction: column;
     
-    margin-bottom: 2rem;
     width: 256px;
-    height: 320px;
+    height: 220px;
 
     justify-content: center;
     align-items: center;
@@ -30,10 +29,10 @@ export const CardTitle = styled.div`
     justify-content: center;
 
     width: 100%;
-    font-size: 24px;
+    font-size: 18px;
     font-weight: 600;
     color: ${props => props.theme["orange"]};
 
-    padding: 1.5rem 0;
+    padding: .5rem 0;
     text-align: center;
 `;

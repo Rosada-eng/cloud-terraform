@@ -4,7 +4,13 @@ import { api } from "../../../../services/api";
 import { ApplyButtonContainer } from "./style";
 
 export function ApplyButton() {
-    const { instances, securityGroups, IAMUsers } = useContext(AppContext);
+    const { instances, securityGroups, IAMUsers, setChangedIAMUsers, setChangedInstances, setChangedSecurityGroups } = useContext(AppContext);
+
+
+    const askApply = async (json) => { 
+        const result = await api.post("/apply", json);
+        console.log(result);
+    }
 
     function compileJSON() {
         console.log("instances ", instances);
@@ -33,9 +39,8 @@ export function ApplyButton() {
 
           }
         console.log(json);
-          
-        api.post("/apply", json).then((response) => {console.log(response)});
-
+        
+        askApply(json);
         
     }
 

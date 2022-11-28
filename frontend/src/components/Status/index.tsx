@@ -104,7 +104,7 @@ export function Status() {
                     :
                 <StatusColumn >
                     <StatusColumnTitle> Instâncias </StatusColumnTitle>
-                    {instances.slice(0, 4).map((instance) => {
+                    {instances.slice(0, 12).map((instance) => {
                         return (
                         <InstanceStatus 
                             key={instance.id}

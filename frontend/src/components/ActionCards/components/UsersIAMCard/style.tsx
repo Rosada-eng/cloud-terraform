@@ -5,9 +5,8 @@ export const CardContainer = styled.div`
     flex-direction: column;
     
     width: 256px;
-    height: 320px;
+    height: 220px;
 
-    margin-bottom: 2rem;
 
     justify-content: center;
     align-items: center;
@@ -31,11 +30,11 @@ export const CardTitle = styled.div`
     justify-content: center;
 
     width: 100%;
-    font-size: 24px;
+    font-size: 18px;
     font-weight: 600;
     color: ${props => props.theme["green-button"]};
 
-    padding: 1.5rem 0;
+    padding: .5rem 0;
 
 
 `;

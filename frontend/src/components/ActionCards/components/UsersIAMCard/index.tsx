@@ -1,14 +1,16 @@
 import { PlusCircle, User } from "phosphor-react";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { defaultTheme } from "../../../../styles/themes/default";
 import { NewUserForms } from "../../../Forms/NewUserForms";
-import { ChangesFeedback } from "../ChangesFeedback";
 import { CardContainer, CardTitle } from "./style";
 import Modal from "styled-react-modal";
+import { AppContext } from "../../../../context/Context";
 
 export function UsersIAMCard() {
     const [isOpen, setIsOpen] = useState(false);
     const [opacity, setOpacity] = useState(0);
+
+    const {changedIAMUsers} = useContext(AppContext);
 
     function toggleModal(e) {
         setOpacity(0);
@@ -55,15 +57,14 @@ export function UsersIAMCard() {
             </StyledModal>
             
             <CardContainer onClick={toggleModal}> 
-                <User size={96} color={defaultTheme["green-button"]} weight="thin" />
+                <User size={76} color={defaultTheme["green-button"]} weight="thin" />
                 <CardTitle> 
                     <p> adicionar </p> 
                     <p> Usuário IAM </p>
                 </CardTitle>
-                <PlusCircle size={32} color={defaultTheme["green-button"]} />
+                <PlusCircle size={24} color={defaultTheme["green-button"]} />
             </CardContainer>
     
-            <ChangesFeedback />
 
         </div>
 

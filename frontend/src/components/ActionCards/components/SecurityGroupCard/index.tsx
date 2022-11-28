@@ -1,16 +1,18 @@
 import { Keyhole, PlusCircle } from "phosphor-react";
 import { defaultTheme } from "../../../../styles/themes/default";
 import { NewSecurityGroupForms } from "../../../Forms/NewSecurityGroupForms";
-import { ChangesFeedback } from "../ChangesFeedback";
 import { CardContainer, CardTitle } from "./style";
 import Modal from "styled-react-modal";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { GressForms } from "../../../Forms/NewSecurityGroupForms/components/GressForms";
+import { AppContext } from "../../../../context/Context";
 
 export function SecurityGroupCard() {
 
     const [isOpen, setIsOpen] = useState(false);
     const [opacity, setOpacity] = useState(0);
+
+    const {changedSecurityGroups} = useContext(AppContext);
 
     function toggleModal(e) {
         setOpacity(0);
@@ -60,15 +62,14 @@ export function SecurityGroupCard() {
 
 
             <CardContainer onClick={toggleModal}> 
-                <Keyhole size={96} color={defaultTheme["blue-button"]} weight="thin" />
+                <Keyhole size={76} color={defaultTheme["blue-button"]} weight="thin" />
                 <CardTitle> 
                     <p>adicionar</p>
                     <p>Grupo de Segurança</p> 
                 </CardTitle>
-                <PlusCircle size={32} color={defaultTheme["blue-button"]} />
+                <PlusCircle size={24} color={defaultTheme["blue-button"]} />
             </CardContainer>
 
-            <ChangesFeedback />
         </div>
 
 

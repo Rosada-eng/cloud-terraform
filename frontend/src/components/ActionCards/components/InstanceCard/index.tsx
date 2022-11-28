@@ -1,16 +1,18 @@
 import { Cpu, PlusCircle } from "phosphor-react";
 import { defaultTheme } from "../../../../styles/themes/default";
-import { ChangesFeedback } from "../ChangesFeedback";
 import { CardContainer, CardTitle } from "./style";
 import Modal from "styled-react-modal";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { NewForms } from "../../../Forms/NewInstanceForms";
+import { AppContext } from "../../../../context/Context";
 
 
 
 export function InstanceCard() {
     const [isOpen, setIsOpen] = useState(false);
     const [opacity, setOpacity] = useState(0);
+
+    const {changedInstances} = useContext(AppContext);
 
     function toggleModal(e) {
         setOpacity(0);
@@ -58,15 +60,14 @@ export function InstanceCard() {
             </StyledModal>
             
             <CardContainer onClick={toggleModal}> 
-                <Cpu size={96} color={defaultTheme.orange} weight="thin" />
+                <Cpu size={76} color={defaultTheme.orange} weight="thin" />
                 <CardTitle> 
                     <p>adicionar </p>
                     <p>Instância </p> 
                 </CardTitle>
-                <PlusCircle size={32} color={defaultTheme.orange} />
+                <PlusCircle size={24} color={defaultTheme.orange} />
             </CardContainer>
 
-            <ChangesFeedback />
 
         </div>
 
