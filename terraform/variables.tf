@@ -43,7 +43,6 @@ variable "security_groups" {
 
 variable "users" {
   type        = list(string)
-  default     = ["default-user", "test-user"]
   description = "List of user names to be created with access to all actions and resources"
 }
 
