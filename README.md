@@ -28,6 +28,12 @@ A aplicação deverá rodar na porta 8000, se disponível.
 
 Preencha o arquivo `.env.auto.tfvars.template` com as suas credenciais de AWS e renomeio-o para `.env.auto.tfvars`
 
+```
+# inicialize a infraestrutura do terraform
+
+terraform init
+```
+
 ### Frontend
 
 Instale todos os pacotes e dependências
@@ -46,6 +52,5 @@ npm run dev
 Ao executar o frontend em conjunto com o backend, a aplicação deve chamar uma rota (/status) que checa se existe um arquivo `terraform.tfstate`. Caso não exista, a aplicação criará uma VPC e outros recursos utilizando um template. Caso necessário, esse template pode ser personalizado, alterando algumas configurações de recursos.
 
 Para executar qualquer alteração nos recursos, sejam de inclusão ou exclusão, basta acionar os botões da interface e, após configurar todas as ações, clicar em `APLICAR` e aguardar até que as mudanças sejam feitas pelo Terraform.
-
 
 ![1669622639411](image/README/1669622639411.png)
